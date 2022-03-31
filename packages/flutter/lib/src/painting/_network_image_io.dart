@@ -55,6 +55,7 @@ class NetworkImage
       chunkEvents: chunkEvents.stream,
       scale: key.scale,
       debugLabel: key.url,
+<<<<<<< HEAD
       informationCollector: () {
         return <DiagnosticsNode>[
           DiagnosticsProperty<image_provider.ImageProvider>(
@@ -62,6 +63,12 @@ class NetworkImage
           DiagnosticsProperty<image_provider.NetworkImage>('Image key', key),
         ];
       },
+=======
+      informationCollector: () => <DiagnosticsNode>[
+        DiagnosticsProperty<image_provider.ImageProvider>('Image provider', this),
+        DiagnosticsProperty<image_provider.NetworkImage>('Image key', key),
+      ],
+>>>>>>> 680962aa75a3c0ea8a55c57adc98944f5558bafd
     );
   }
 
@@ -102,9 +109,14 @@ class NetworkImage
         // The network may be only temporarily unavailable, or the file will be
         // added on the server later. Avoid having future calls to resolve
         // fail to check the network again.
+<<<<<<< HEAD
         await response.drain<List<int>>();
         throw image_provider.NetworkImageLoadException(
             statusCode: response.statusCode, uri: resolved);
+=======
+        await response.drain<List<int>>(<int>[]);
+        throw image_provider.NetworkImageLoadException(statusCode: response.statusCode, uri: resolved);
+>>>>>>> 680962aa75a3c0ea8a55c57adc98944f5558bafd
       }
 
       final Uint8List bytes = await consolidateHttpClientResponseBytes(
@@ -125,7 +137,7 @@ class NetworkImage
       // have had a chance to track the key in the cache at all.
       // Schedule a microtask to give the cache a chance to add the key.
       scheduleMicrotask(() {
-        PaintingBinding.instance!.imageCache!.evict(key);
+        PaintingBinding.instance.imageCache.evict(key);
       });
       rethrow;
     } finally {
@@ -140,7 +152,7 @@ class NetworkImage
   }
 
   @override
-  int get hashCode => ui.hashValues(url, scale);
+  int get hashCode => Object.hash(url, scale);
 
   @override
   String toString() =>

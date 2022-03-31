@@ -2,7 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-
 import 'dart:math' as math;
 
 import 'package:flutter/foundation.dart';
@@ -134,7 +133,7 @@ class ContinuousRectangleBorder extends OutlinedBorder {
   }
 
   @override
-  ContinuousRectangleBorder copyWith({ BorderSide? side, BorderRadius? borderRadius }) {
+  ContinuousRectangleBorder copyWith({ BorderSide? side, BorderRadiusGeometry? borderRadius }) {
     return ContinuousRectangleBorder(
       side: side ?? this.side,
       borderRadius: borderRadius ?? this.borderRadius,
@@ -166,7 +165,7 @@ class ContinuousRectangleBorder extends OutlinedBorder {
   }
 
   @override
-  int get hashCode => hashValues(side, borderRadius);
+  int get hashCode => Object.hash(side, borderRadius);
 
   @override
   String toString() {

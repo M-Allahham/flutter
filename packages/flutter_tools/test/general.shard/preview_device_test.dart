@@ -24,7 +24,6 @@ import 'package:test/fake.dart';
 
 import '../src/common.dart';
 import '../src/context.dart';
-import '../src/fake_process_manager.dart';
 
 void main() {
   testWithoutContext('PreviewDevice defaults', () async {
@@ -62,7 +61,7 @@ void main() {
           command: const <String>[
             '/.tmp_rand0/flutter_preview.rand0/splash'
           ],
-          stdout: 'Observatory listening on http://127.0.0.1:64494/fZ_B2N6JRwY=/\n',
+          stdout: 'The Dart VM service is listening on http://127.0.0.1:64494/fZ_B2N6JRwY=/\n',
           completer: completer,
         )
       ]),
@@ -85,8 +84,8 @@ void main() {
   });
 }
 
-class FakeFlutterProject extends Fake implements FlutterProject {}
-class FakeApplicationPackage extends Fake implements ApplicationPackage {}
+class FakeFlutterProject extends Fake implements FlutterProject { }
+class FakeApplicationPackage extends Fake implements ApplicationPackage { }
 class FakeBundleBuilder extends Fake implements BundleBuilder {
   FakeBundleBuilder(this.fileSystem);
 

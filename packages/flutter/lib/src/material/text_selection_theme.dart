@@ -81,13 +81,11 @@ class TextSelectionThemeData with Diagnosticable {
   }
 
   @override
-  int get hashCode {
-    return hashValues(
-      cursorColor,
-      selectionColor,
-      selectionHandleColor,
-    );
-  }
+  int get hashCode => Object.hash(
+    cursorColor,
+    selectionColor,
+    selectionHandleColor,
+  );
 
   @override
   bool operator==(Object other) {
@@ -128,7 +126,7 @@ class TextSelectionThemeData with Diagnosticable {
 ///     selectionHandleColor: Colors.lightBlue,
 ///   ),
 ///   child: TextField(),
-/// ),
+/// )
 /// ```
 /// {@end-tool}
 class TextSelectionTheme extends InheritedTheme {
